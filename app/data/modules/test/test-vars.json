@@ -1,0 +1,12 @@
+[
+    {
+        "name": "VAR1",
+        "sensitive": false,
+        "value": "value1"
+    },
+    {
+        "name": "SECRET_VAR",
+        "sensitive": true,
+        "value": "test-secret-var"
+    }
+]
