@@ -12,6 +12,12 @@ class AppServiceProperties:
     def get_app_properties(self):
         return self.app_settings.properties
 
+    def get_property_value(self, property_name):
+        return self.get_app_properties()[property_name]
+
+    def property_exists_in_app_service(self, property_name):
+        return property_name in self.get_app_properties().keys()
+
     def update_property(self, property_name, property_value):
         self.app_settings.properties.update({ property_name: property_value })
 

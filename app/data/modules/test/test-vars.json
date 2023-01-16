@@ -1,12 +1,27 @@
 [
     {
-        "name": "VAR1",
+        "name": "FIRST_BULK_VAR",
         "sensitive": false,
-        "value": "value1"
+        "value": "123"
     },
     {
-        "name": "SECRET_VAR",
+        "name": "SECOND_BULK_VAR_SECRET",
         "sensitive": true,
-        "value": "test-secret-var"
+        "value": "test-second-bulk-var-secret"
+    },
+    {
+        "name": "TEST_VAR1",
+        "sensitive": false,
+        "value": "123456"
+    },
+    {
+        "name": "TEST_VAR2",
+        "sensitive": false,
+        "value": "123456"
+    },
+    {
+        "name": "MY_PASSWORD",
+        "sensitive": true,
+        "value": "test-my-password"
     }
 ]

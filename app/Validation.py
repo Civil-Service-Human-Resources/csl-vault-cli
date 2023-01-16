@@ -4,7 +4,7 @@ from VarFile import VarFile
 
 class Validation:
     def validate_action(self, action_name):
-        actions = ["add", "update", "delete", "bulk-add", "load"]
+        actions = ["add", "update", "delete", "bulk-add", "load", "bulk-load", "sync"]
         action_list = ", ".join(actions)
         if action_name not in actions:
             raise ValueError(f"'{action_name}' is not an acceptable action. Must be one of: {action_list}")
@@ -13,18 +13,20 @@ class Validation:
         environment_service = EnvironmentService()
         if not environment_service.environment_exists(environment_name):
             environment_list = ", ".join(environment_service.environments)
-            raise ValueError(f"'{environment_name}' doesn't exist. Must be one of: {environment_list}")
+            raise ValueError(f"Environment '{environment_name}' doesn't exist. Must be one of: {environment_list}")
 
-    def validate_module(self, module_name):
-        module_service = Module()
-        if not module_service.moduleExists(module_name):
-            module_list = ", ".join(module_service.get_list_of_modules())
-            raise ValueError(f"'{module_name}' doesn't exist. Must be one of: {module_list}")
+    def validate_module(self, environment, module_name):
+        environment_service = EnvironmentService()
+        environment_data = environment_service.get_environment(environment)
+        modules = environment_data["modules"].keys()
+        if module_name not in modules:
+            module_list = ", ".join(modules)
+            raise ValueError(f"Module '{module_name}' doesn't exist. Must be one of: {module_list}")
 
     def validate_variable(self, action, environment_name, module_name, variable_name):
         self.validate_action(action)
         self.validate_environment(environment_name)
-        self.validate_module(module_name)
+        self.validate_module(environment_name, module_name)
 
         variable_file = VarFile(environment_name, module_name)
 
