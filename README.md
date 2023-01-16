@@ -10,7 +10,8 @@ Manage variables and secrets for Civil Service Learning apps.
     * [Update a variable](#update-a-variable)
     * [Delete a variable](#delete-a-variable)
     * [Add multiple variables](#add-multiple-variables)
-    * [Load variables to the App Services](#load-variables-to-the-app-services)
+    * [Load a variable to the App Service](#load-a-variable-to-the-app-service)
+    * [Bulk load variables to the App Services](#bulk-load-variables-to-the-app-services)
 
 ## Initial setup
 
@@ -217,18 +218,34 @@ Then, to execute the bulk add, use the `vault bulk-add` command like so:
 vault bulk-add <filePath>
 ```
 
-### Load variables to the App Services
+### Load a variable to the App Service
 
-Use the `load` command to compare the variables you have locally with the variables currently in your App Services:
+Use the `load` action to load a variable specified previously into an the configuration properties of an App Service.
+
+```
+vault load <environment> <module> <variableName>
+```
+
+This will load the variable value if it's a non-secret variable, or its Key Vault reference if it's a secret.
+
+Example:
+
+```
+vault load integration identity DB_URL
+```
+
+### Bulk load variables to the App Services
+
+Use the `bulk-load` command to compare the variables you have locally with the variables currently in your App Services:
 
 ```sh
-vault load <environment>
+vault bulk-load <environment>
 ```
 
 For example:
 
 ```sh
-vault load integration
+vault bulk-load integration
 ```
 
 This command will scan through all the App Services in the `integration` environment and compare its variables with the variables you have stored in your JSON files. If there are any changes:
@@ -245,4 +262,20 @@ In app service: support-new@governmentcampus.co.uk
 
 REDIS_PASSWORD: my-redis-pw
 🔵 Variable not in 'lpg-ui'. It will be added.
+```
+
+### Sync a variable from an App Service
+
+Use the `sync` action to get a variable from an App Service and update the local JSON files:
+
+💡 `sync` can only update non-secret variables.
+
+```
+vault sync <environment> <module> <variableName>
+```
+
+Example:
+
+```
+vault sync integration identity MY_DB
 ```
