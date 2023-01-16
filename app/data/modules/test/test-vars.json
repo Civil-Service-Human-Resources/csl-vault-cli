@@ -23,5 +23,15 @@
         "name": "MY_PASSWORD",
         "sensitive": true,
         "value": "test-my-password"
+    },
+    {
+        "name": "DB_URL",
+        "sensitive": false,
+        "value": "http://example.com"
+    },
+    {
+        "name": "DB_PASS",
+        "sensitive": true,
+        "value": "test-db-pass"
     }
 ]

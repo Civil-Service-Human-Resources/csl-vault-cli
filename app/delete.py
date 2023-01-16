@@ -13,7 +13,7 @@ def delete_var(args):
 
     if len(app_services_property_exists) > 0:
         print("This variable is currently being used in these app services: " + ", ".join(app_services_property_exists))
-        user_answer = input("Are you aure you'd like to delete this variable? (Can only accept 'yes') ")
+        user_answer = input("Are you sure you'd like to delete this variable? (Can only accept 'yes') ")
         user_confirmed_deletion = user_answer == "yes"
 
     if user_confirmed_deletion:
