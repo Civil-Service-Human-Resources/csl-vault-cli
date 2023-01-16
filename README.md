@@ -12,6 +12,7 @@ Manage variables and secrets for Civil Service Learning apps.
     * [Add multiple variables](#add-multiple-variables)
     * [Load a variable to the App Service](#load-a-variable-to-the-app-service)
     * [Bulk load variables to the App Services](#bulk-load-variables-to-the-app-services)
+    * [Sync a variable from an App Service](#sync-a-variable-from-an-app-service)
 
 ## Initial setup
 
