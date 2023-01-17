@@ -1,7 +1,7 @@
 import json
 class EnvironmentService:
     def __init__(self):
-        environments = open("data/environments.json", "r", encoding="utf-8-sig").read()
+        environments = self.get_environments_file()
         environments = json.loads(environments)
         self.environments = environments
 
@@ -10,3 +10,6 @@ class EnvironmentService:
 
     def get_environment(self, environment_name):
         return self.environments[environment_name]
+
+    def get_environments_file(self):
+        return open("data/environments.json", "r", encoding="utf-8-sig").read()

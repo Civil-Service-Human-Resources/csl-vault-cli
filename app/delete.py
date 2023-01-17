@@ -11,12 +11,13 @@ def delete_var(args):
     
     app_services_property_exists = get_list_of_app_services_a_property_exists(args.environment, args.name)
 
+    variable_can_be_deleted = True
     if len(app_services_property_exists) > 0:
         print("This variable is currently being used in these app services: " + ", ".join(app_services_property_exists))
         user_answer = input("Are you sure you'd like to delete this variable? (Can only accept 'yes') ")
-        user_confirmed_deletion = user_answer == "yes"
+        variable_can_be_deleted = user_answer == "yes"
 
-    if user_confirmed_deletion:
+    if variable_can_be_deleted:
 
         file = VarFile(args.environment, args.module)
         variable = file.get_variable(args.name)

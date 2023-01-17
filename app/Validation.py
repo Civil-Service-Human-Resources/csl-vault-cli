@@ -1,5 +1,4 @@
 from EnvironmentService import EnvironmentService
-from Module import Module
 from VarFile import VarFile
 
 class Validation:

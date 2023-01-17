@@ -5,9 +5,9 @@ class AppServiceProperties:
     def __init__(self, subscription_id, resource_group, app_service_name):
         self.resource_group = resource_group
         self.app_service_name = app_service_name
-        credential = DefaultAzureCredential()
-        self.web_client = WebSiteManagementClient(credential=credential, subscription_id=subscription_id)
-        self.app_settings = self.web_client.web_apps.list_application_settings(resource_group, app_service_name)
+        
+        self.web_client = self.get_web_client(subscription_id)
+        self.app_settings = self.get_application_settings()
 
     def get_app_properties(self):
         return self.app_settings.properties
@@ -27,3 +27,10 @@ class AppServiceProperties:
             self.app_service_name, 
             app_settings=self.app_settings
         )
+
+    def get_web_client(self, subscription_id):
+        credential = DefaultAzureCredential()
+        return WebSiteManagementClient(credential=credential, subscription_id=subscription_id)
+
+    def get_application_settings(self):
+         return self.web_client.web_apps.list_application_settings(self.resource_group, self.app_service_name)
