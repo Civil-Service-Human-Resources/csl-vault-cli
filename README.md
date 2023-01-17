@@ -1,5 +1,7 @@
 # Civil Service Learning Vault
 
+[![Test application](https://github.com/Civil-Service-Human-Resources/csl-vault-cli/actions/workflows/python-app.yml/badge.svg)](https://github.com/Civil-Service-Human-Resources/csl-vault-cli/actions/workflows/python-app.yml)
+
 Manage variables and secrets for Civil Service Learning apps.
 
 * [Initial setup](#initial-setup)
